@@ -10,7 +10,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """Ponto de entrada para o comando"""
-
         self.stdout.write('Aguardando a base de dados...')
         db_up = False
 
