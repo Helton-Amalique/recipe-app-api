@@ -14,7 +14,7 @@ from django.test import SimpleTestCase
 
 @patch('core.management.commands.wait_for_db.Command.check')
 class CommandTests(SimpleTestCase):
-    """ testando comandos."""
+    """Testando comandos."""
 
     def test_wait_for_db_ready(self, patched_check):
         """Testa a espera pela base de dados quando ela está pronta"""
@@ -25,13 +25,11 @@ class CommandTests(SimpleTestCase):
         patched_check.assert_called_once_with(databases=['default'])
 
     @patch('time.sleep')
-    def test_wait_for_db_delay(self,patched_sleep ,patched_check):
+    def test_wait_for_db_delay(self, patched_sleep, patched_check):
         """ Test waitting for database when getting OperationlError."""
-
         patched_check.side_effect = [Psycopg2Error] * 2 + \
-            [OperationalError]  * 3 + [True]
+            [OperationalError] * 3 + [True]
         
-
         call_command('wait_for_db')
 
         self.assertEqual(patched_check.call_count, 6)
