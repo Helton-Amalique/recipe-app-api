@@ -13,10 +13,10 @@ services:
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DB_HOST= db
-      - DB_NAME= devdb
-      - DB_USER= xipoko
-      - DB_PASS= uzumaki
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=xipoko
+      - DB_PASS=uzumaki
     depends_on:
       - db
 
@@ -26,9 +26,9 @@ services:
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: xipoko
-      POSTGRES_PASSWORD: uzumaki
-      POSTGRES_DB: devdb
+      - POSTGRES_USER:xipoko
+      - POSTGRES_PASSWORD:uzumaki
+      - POSTGRES_DB:devdb
 
 volumes:
   dev-db-data:

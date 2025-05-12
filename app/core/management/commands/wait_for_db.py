@@ -1,16 +1,10 @@
 """
 Comando de DJango para aguardar pela base de dados
 """
-"""
-Comando do Django para aguardar pela base de dados
-"""
 import time
-
 from psycopg2 import OperationalError as Psycopg2OpError
 from django.db.utils import OperationalError
 from django.core.management.base import BaseCommand
-
-
 class Command(BaseCommand):
     """Comando Django para aguardar pela base de dados"""
 
