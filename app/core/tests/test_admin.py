@@ -30,7 +30,7 @@ class AdminSiteTests(TestCase):
 
         self.assertContains(res, self.user.name)
         self.assertContains(res, self.user.email)
-        #self.assertEqual(res.status_code, 200)
+
 
     def test_edit_user_page(self):
         """"Testa a pagina de edicao de usuario"""
