@@ -29,17 +29,16 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2')
+            'fields': (
+                'email',
+                'password1',
+                'password2',
+                'name',
+                'is_active',
+                'is_staff',
+                'is_superuser',
+            ),
         }),
-        (
-            _('Permitions'),
-            {
-                'fields':(
-                    'is_active',
-                    'is_staff',
-                    'is_superuser',
-                )
-            }
-        ),
     )
+
 admin.site.register(models.User, UserAdmin)
