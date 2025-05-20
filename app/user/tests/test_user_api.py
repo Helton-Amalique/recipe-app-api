@@ -41,7 +41,7 @@ class PublicUserApiTests(TestCase):
         """testar erro quando o usuario ja existe"""
         payload = {
             'email': 'test@example.com',
-            'password':'testpass123',
+            'password': 'testpass123',
             'name': 'Test Name',
         }
         create_user(**payload)
@@ -72,7 +72,7 @@ class PublicUserApiTests(TestCase):
         }
         create_user(**user_details)
 
-        payload= {
+        payload = {
             'email': user_details['email'],
             'password': user_details['password']
         }
@@ -106,7 +106,6 @@ class PublicUserApiTests(TestCase):
         res = self.client.get(ME_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
-
 
 class PrivateUserApiTests(TestCase):
     """O API request necessita de autorizacao"""
