@@ -15,18 +15,18 @@ Including another URLconf
 """
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-urlspatterns =[
-    path('adim/', admin.site.urls),
-    path('api.schema/', SpectacularAPIView.as_view(), name='api-schema'),
-    path(
-        'api/docs/',
-        SpectacularSwaggerView.as_view(url_name='api-schema'),
-        name='api-docs'
-    )
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    # Gera o schema OpenAPI (JSON)
+    path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
+    # Interface Swagger usando o schema gerado
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),
+
+    path('api/user/', include('user.urls'))
 ]
