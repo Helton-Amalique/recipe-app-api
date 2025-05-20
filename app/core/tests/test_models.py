@@ -45,7 +45,7 @@ class ModelsTests(TestCase):
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
 
-    """ Trabalhando Recipes """
+    """################ Trabalhando Recipes ###############"""
 
     def test_create_recipe(self):
         """"""
