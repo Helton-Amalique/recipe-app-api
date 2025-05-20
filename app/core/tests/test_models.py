@@ -4,6 +4,11 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 
 from core import models
+
+def create_user(email='user@example.com', password='pass123'):
+    """criando e retornando um usuario novo"""
+    return get_user_model().objects.create_user(email, password)
+
 class ModelsTests(TestCase):
     """ Test models"""
 
@@ -63,3 +68,10 @@ class ModelsTests(TestCase):
         )
 
         self.assertEqual(str(recipe), recipe.title)
+
+    def test_creat_tag(self):
+        """criando com success uma tag"""
+        user = create_user()
+        tag = models.Tag.objects.create(user=user, name='Tag1')
+
+        self.assertEqual(str(tag), tag.name)
