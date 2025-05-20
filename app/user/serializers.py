@@ -46,8 +46,8 @@ class AuthTokenSerializer(serializers.Serializer):
             password= password,
         )
         if not user:
-            msg=_('Nao e possivel autenticar com os dados introduzidos')
-            raise serializers.ValidationError(msg, code = 'authorization')
+            msg= _('Nao e possivel autenticar com os dados introduzidos')
+            raise serializers.ValidationError(msg, code ='authorization')
 
-        attrs['user']= user
+        attrs['user'] = user
         return attrs
