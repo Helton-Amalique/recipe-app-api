@@ -56,7 +56,8 @@ class Recipe(models.Model):
         return self.title
 
 class Tag(models.Model):
-    name = models.CharField(max_length=255)
+    #name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default='default_tag')
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
