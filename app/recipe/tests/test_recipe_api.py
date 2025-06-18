@@ -332,13 +332,13 @@ class PrivateRecipeApiTest(TestCase):
     def test_update_recipe_assing_ingred(self):
         """assingning an existing ingredient qhen updating a recipe"""
         ingredient1 = Ingredient.objects.create(user=self.user, name='Pepper')
-        recipe =  create_recipe(user=self.user)
+        recipe = create_recipe(user=self.user)
         recipe.ingredients.add(ingredient1)
 
         ingredient2 = Ingredient.objects.create(user=self.user, name='Chili')
         payload = {'ingredients': [{'name': 'Chili'}]}
         url = details_url(recipe.id)
-        res =  self.client.patch(url, payload, format='json')
+        res = self.client.patch(url, payload, format='json')
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIn(ingredient2, recipe.ingredients.all())
@@ -355,5 +355,5 @@ class PrivateRecipeApiTest(TestCase):
         res = self.client.patch(url, payload, format='json')
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        recipe.refresh_from_db() #ainda nao sei
+        recipe.refresh_from_db()
         self.assertEqual(recipe.ingredients.count(), 0)
