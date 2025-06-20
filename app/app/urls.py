@@ -25,14 +25,14 @@ urlpatterns = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Gera o schema OpenAPI (JSON)
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
-    # Interface Swagger usando o schema gerado
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),
 
-    path('api/user/', include('recipe.urls')),
+    # path('api/user/', include('recipe.urls')),
+    # path('api/user/', include('user.urls')),
 
     path('api/user/', include('user.urls')),
+    path('api/recipe/', include('recipe.urls')),
 ]
 
 if settings.DEBUG:
