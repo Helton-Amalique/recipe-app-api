@@ -55,7 +55,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             ingredient_ids = self._params_to_ints(ingredients)
             queryset = queryset.filter(ingredients__id__in=ingredient_ids)
 
-        return  queryset.filter(
+        return queryset.filter(
             user=self.request.user
         ).order_by('-id').distinct()
 
@@ -65,6 +65,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         elif self.action == 'upload_image':
             return serializers.RecipeImageSerializer
         return serializers.RecipeSerializer
+
     def perform_create(self, serializer):
         """cria uma nova receita"""
         serializer.save(user=self.request.user)

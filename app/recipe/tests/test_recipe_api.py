@@ -119,9 +119,9 @@ class PrivateRecipeApiTest(TestCase):
         """"""
         original_link = 'https://example.com/recipe.pdf'
         recipe = create_recipe(
-            user=self.user,
-            title='Sample recipe title',
-            link=original_link,
+            user = self.user,
+            title ='Sample recipe title',
+            link = original_link,
         )
 
         payload = {'title': 'New recipe tiile'}
@@ -379,7 +379,7 @@ class PrivateRecipeApiTest(TestCase):
         r3 = create_recipe(user=self.user, title='Fish and chips')
 
         params = {'tags': f'{tag1.id},{tag2.id}'}
-        res =  self.client.get(RECIPES_URL, params)
+        res = self.client.get(RECIPES_URL, params)
 
         s1 = RecipeSerializer(r1)
         s2 = RecipeSerializer(r2)
@@ -392,8 +392,8 @@ class PrivateRecipeApiTest(TestCase):
         """Test filtering recipe by ingredients"""
         r1 = create_recipe(user=self.user, title='Posh beans om Toast')
         r2 = create_recipe(user=self.user, title='Chiken Cacciatore')
-        in1 =  Ingredient.objects.create(user=self.user, name='Feta Chesse')
-        in2 =  Ingredient.objects.create(user=self.user, name='Chiken')
+        in1 = Ingredient.objects.create(user=self.user, name='Feta Chesse')
+        in2 = Ingredient.objects.create(user=self.user, name='Chiken')
         r1.ingredients.add(in1)
         r2.ingredients.add(in2)
         r3 = create_recipe(user=self.user, title='Red Lentil Daal')
@@ -407,14 +407,6 @@ class PrivateRecipeApiTest(TestCase):
         self.assertIn(w1.data, res.data)
         self.assertIn(w2.data, res.data)
         self.assertNotIn(w3.data, res.data)
-
-
-
-
-
-
-
-
 
 class ImageUploadTest(TestCase):
     """Test for ehr image upload API"""
@@ -438,7 +430,7 @@ class ImageUploadTest(TestCase):
             img = Image.new('RGB', (10, 10))
             img.save(image_file, format='JPEG')
             image_file.seek(0)
-            payload= {'image': image_file}
+            payload = {'image': image_file}
             res = self.client.post(url, payload, format='multipart')
 
         self.recipe.refresh_from_db()

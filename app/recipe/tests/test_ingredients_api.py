@@ -127,4 +127,4 @@ class PrivateIngredientApiTests(TestCase):
         recipe2.ingredients.add(ing)
 
         res =  self.client.get(INGREDIENTS_URL, {'assigned_only': 1})
-        self.assertEqual(len(res.data), 1)
+        self.assertEqual(len(res.data), 1   )
