@@ -101,7 +101,7 @@ class PrivateTagApiTests(TestCase):
         res = self.client.get(TAGS_URL, {'assigned_only': 1})
 
         s1 = TagSerializer(tag1)
-        s2 = TagSerializer(tag1)
+        s2 = TagSerializer(tag2)
         self.assertIn(s1.data, res.data)
         self.assertNotIn(s2.data, res.data)
 
@@ -117,7 +117,7 @@ class PrivateTagApiTests(TestCase):
         )
 
         recipe2 = Recipe.objects.create(
-            title = '',
+            title = 'Omelete',
             time_minutes = 3,
             price = Decimal('6.30'),
             user=self.user
