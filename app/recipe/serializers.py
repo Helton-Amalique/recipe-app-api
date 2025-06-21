@@ -24,6 +24,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, required=False)
     ingredients = IngredientSerializer(many=True, required=False)
     class Meta:
+
         model = Recipe
         fields = [
             'id', 'title', 'time_minutes', 'price', 'link', 'description', 'tags', 'ingredients'
@@ -49,7 +50,6 @@ class RecipeSerializer(serializers.ModelSerializer):
                 **ingredient,
             )
             recipe.ingredients.add(ingredient_obj)
-
 
     def create(self, validated_data):
         """Criando recipe"""

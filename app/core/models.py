@@ -15,9 +15,6 @@ def recipe_image_file_path(instance, filename):
     filename = f'{uuid.uuid4()}{ext}'
 
     return os.path.join('uploads/recipe', filename)
-   # return os.path.join('uploads','recipe', filename)
-
-
 
 class UserManager(BaseUserManager):
     """gerenciador de usuarios"""
@@ -71,7 +68,7 @@ class Recipe(models.Model):
         return self.title
 
 class Tag(models.Model):
-    # name = models.CharField(max_length=255)
+
     name = models.CharField(max_length=255, default='default_tag')
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
